@@ -70,6 +70,7 @@ if (MFEM_USE_MPI)
     ex27p.cpp
     ex28p.cpp
     ex29p.cpp
+    navier_2d_lid.cpp
     )
 endif()
 

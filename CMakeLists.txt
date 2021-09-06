@@ -467,7 +467,7 @@ message(STATUS "MFEM git string: ${MFEM_GIT_STRING}")
 # Headers and sources
 set(SOURCES "")
 set(HEADERS "")
-set(MFEM_SOURCE_DIRS general linalg mesh fem)
+set(MFEM_SOURCE_DIRS general linalg mesh fem fluid)
 foreach(DIR IN LISTS MFEM_SOURCE_DIRS)
   add_subdirectory(${DIR})
 endforeach()
