@@ -23,18 +23,19 @@ struct s_NavierContext
 {
    int order = 4;
    double kin_vis = 0.001;
-   double t_final = 8.0;
+   double t_final = 1.0;
    double dt = 1e-3;
 } ctx;
 
 void vel(const Vector &x, double t, Vector &u)
 {
-   double xi = x(0);
-   double yi = x(1);
+   double xi = x(0); //x
+   double yi = x(1); //y
+   double zi = x(2); //z
 
    double U = 1.0;
 
-   if ( abs(yi - 1.0) <= 1e-8)
+   if ( abs(zi - 1.0) <= 1e-8)
    {
       u(0) = U;
    }
@@ -43,6 +44,7 @@ void vel(const Vector &x, double t, Vector &u)
       u(0) = 0.0;
    }
    u(1) = 0.0;
+   u(2) = 0.0;
 }
 
 int main(int argc, char *argv[])
@@ -65,10 +67,10 @@ int main(int argc, char *argv[])
 
    Mesh *mesh = new Mesh(mesh_file);
 
-   for (int i = 0; i < serial_refinements; ++i)
-   {
-      mesh->UniformRefinement();
-   }
+   // for (int i = 0; i < serial_refinements; ++i)
+   // {
+   //    mesh->UniformRefinement();
+   // }
 
    if (mpi.Root())
    {
